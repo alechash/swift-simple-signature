@@ -61,7 +61,7 @@ public struct SignatureView: View {
             Button("Clear signature", action: clear)
             HStack {
                 if selectedTab == Tab.type {
-                    FontFamilyPicker(selection: $fontFamily)
+                    FontFamilyPicker(selection: self.fontFamily)
                 }
                 ColorPickerCompat(selection: $color)
             }
@@ -73,13 +73,13 @@ public struct SignatureView: View {
         return Group {
             if selectedTab == .draw {
                 SignatureDrawView(drawing: $drawing,
-                                  fontFamily: $fontFamily,
+                                  fontFamily: self.fontFamily,
                                   color: $color)
             } else if selectedTab == .image {
                 SignatureImageView(isSet: $isImageSet, selection: $image)
             } else if selectedTab == .type {
                 SignatureTypeView(text: $text,
-                                  fontFamily: $fontFamily,
+                                  fontFamily: self.fontFamily,
                                   color: $color)
             }
         }.padding(.vertical)
